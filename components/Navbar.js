@@ -2,116 +2,85 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import {
+  Home,
+  Info,
+  Briefcase,
+  Building2,
+  Phone,
+} from "lucide-react";
 
-const primaryLinks = [
-  { label: "WHO WE ARE", href: "/about" },
-  { label: "WHAT WE DO", href: "/services" },
-  { label: "PROJECTS", href: "/projects" },
-  { label: "CONTACT US", href: "/contact" },
-];
-
-const secondaryLinks = [
-  { label: "CAREERS", href: "/contact" },
-  { label: "MEDIA CENTRE", href: "/projects" },
-  { label: "SUSTAINABILITY", href: "/about" },
-  { label: "INVESTOR RELATIONS", href: "/contact" },
-  { label: "VIZIPA PRIVILEGE", href: "/projects" },
+const navLinks = [
+  { label: "Home", href: "/", icon: Home },
+  { label: "About", href: "/about", icon: Info },
+  { label: "Services", href: "/services", icon: Briefcase },
+  { label: "Projects", href: "/projects", icon: Building2 },
+  { label: "Contact", href: "/contact", icon: Phone },
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hideNavbar, setHideNavbar] = useState(false);
+  const [showBottomBar, setShowBottomBar] = useState(false);
 
   useEffect(() => {
-    const html = document.documentElement;
-    const body = document.body;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-    if (open) {
-      html.classList.add("menu-open");
-      body.classList.add("menu-open");
-    } else {
-      html.classList.remove("menu-open");
-      body.classList.remove("menu-open");
-    }
+      const topNavbarVisibleLimit = 80;
+      const bottomBarVisibleLimit = 140;
+
+      setScrolled(currentScrollY > 20);
+
+      // Top navbar visible only near hero/top section
+      setHideNavbar(currentScrollY > topNavbarVisibleLimit);
+
+      // Bottom floating navbar visible only after enough scroll
+      setShowBottomBar(currentScrollY > bottomBarVisibleLimit);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      html.classList.remove("menu-open");
-      body.classList.remove("menu-open");
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, [open]);
+  }, []);
 
   return (
     <>
-      <header className="site-header overlay-header">
-        <div className="nav-overlay-shell">
-          <button
-            type="button"
-            className="menu-trigger"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={open}
-            aria-controls="site-sidebar"
-          >
-            <span>MENU</span>
-            <Menu size={24} strokeWidth={1.5} />
-          </button>
-
-          <Link href="/" className="center-brand">
-            VIZIPA
+      <header
+        className={`site-header clean-navbar ${hideNavbar ? "nav-hidden" : ""} ${
+          scrolled ? "nav-scrolled" : ""
+        }`}
+      >
+        <div className="navbar-shell">
+          <Link href="/" className="navbar-brand">
+            Vizipa
           </Link>
+
+          <nav className="desktop-nav">
+            {navLinks.map((item) => (
+              <Link key={item.label} href={item.href} className="nav-link">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </header>
 
-      <div className={`sidebar-menu ${open ? "active" : ""}`} aria-hidden={!open}>
-        <button
-          type="button"
-          className="sidebar-backdrop"
-          onClick={() => setOpen(false)}
-          aria-label="Close menu backdrop"
-        />
+      <nav className={`bottom-tab-navbar ${showBottomBar ? "is-visible" : ""}`}>
+        {navLinks.map((item) => {
+          const Icon = item.icon;
 
-        <aside id="site-sidebar" className="sidebar-panel">
-          <div className="sidebar-top">
-            <div className="sidebar-brand">VIZIPA</div>
-
-            <button
-              type="button"
-              className="sidebar-close"
-              onClick={() => setOpen(false)}
-              aria-label="Close menu"
-            >
-              <X size={28} strokeWidth={1.5} />
-            </button>
-          </div>
-
-          <div className="sidebar-group sidebar-group-main">
-            {primaryLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="sidebar-link large-link"
-                onClick={() => setOpen(false)}
-              >
-                <span>{item.label}</span>
-                <ArrowRight size={22} strokeWidth={1.25} />
-              </Link>
-            ))}
-          </div>
-
-          <div className="sidebar-group sidebar-group-secondary">
-            {secondaryLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="sidebar-link"
-                onClick={() => setOpen(false)}
-              >
-                <span>{item.label}</span>
-              </Link>
-            ))}
-          </div>
-        </aside>
-      </div>
+          return (
+            <Link key={item.label} href={item.href} className="bottom-tab-link">
+              <Icon size={16} strokeWidth={1.8} />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav>
     </>
   );
 }

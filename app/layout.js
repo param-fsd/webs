@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Vizipa Constructions Pvt. Ltd.",
+  title: "Vizipa - Premium Plotted Developments in Bangalore",
   description:
     "Premium plotted developments in Bangalore with clean titles, precision engineering, and transparent execution.",
 };
