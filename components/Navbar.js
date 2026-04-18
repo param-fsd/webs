@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   Home,
   Info,
@@ -19,40 +20,52 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const [scrolled, setScrolled] = useState(false);
   const [hideNavbar, setHideNavbar] = useState(false);
   const [showBottomBar, setShowBottomBar] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const isHome = pathname === "/";
 
   useEffect(() => {
+    const checkViewport = () => {
+      setIsMobile(window.innerWidth <= 1100);
+    };
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      const topNavbarVisibleLimit = 80;
-      const bottomBarVisibleLimit = 140;
-
       setScrolled(currentScrollY > 20);
 
-      // Top navbar visible only near hero/top section
-      setHideNavbar(currentScrollY > topNavbarVisibleLimit);
-
-      // Bottom floating navbar visible only after enough scroll
-      setShowBottomBar(currentScrollY > bottomBarVisibleLimit);
+      if (isMobile) {
+        setHideNavbar(currentScrollY > 80);
+        setShowBottomBar(true);
+      } else {
+        setHideNavbar(currentScrollY > 80);
+        setShowBottomBar(currentScrollY > 140);
+      }
     };
 
+    checkViewport();
     handleScroll();
+
+    window.addEventListener("resize", checkViewport);
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      window.removeEventListener("resize", checkViewport);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
       <header
-        className={`site-header clean-navbar ${hideNavbar ? "nav-hidden" : ""} ${
-          scrolled ? "nav-scrolled" : ""
-        }`}
+        className={`site-header clean-navbar 
+        ${hideNavbar ? "nav-hidden" : ""} 
+        ${scrolled || !isHome ? "nav-scrolled" : ""}`}
       >
         <div className="navbar-shell">
           <Link href="/" className="navbar-brand">
@@ -69,7 +82,11 @@ export default function Navbar() {
         </div>
       </header>
 
-      <nav className={`bottom-tab-navbar ${showBottomBar ? "is-visible" : ""}`}>
+      <nav
+        className={`bottom-tab-navbar ${
+          showBottomBar || isMobile ? "is-visible" : ""
+        }`}
+      >
         {navLinks.map((item) => {
           const Icon = item.icon;
 
