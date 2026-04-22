@@ -1706,3 +1706,352 @@ h4 {
     padding: 7px 18px;
   }
 }
+
+/* =========================
+   PROJECT CARD (HORIZONTAL FIX)
+========================= */
+
+.project-showcase-horizontal {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: 360px;
+
+  transition:
+    transform 0.32s ease,
+    box-shadow 0.32s ease;
+}
+
+.project-showcase-horizontal:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* LEFT IMAGE */
+.project-image-left {
+  position: relative;
+  height: 100%;
+  min-height: 340px;
+  overflow: hidden;
+  background: #eaeaea;
+}
+
+.project-image-left .cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-showcase-horizontal:hover .cover-image {
+  transform: scale(1.04);
+}
+
+/* RIGHT CONTENT */
+.project-content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 34px;
+}
+
+.project-card-title {
+  margin: 12px 0 10px;
+  letter-spacing: -0.02em;
+}
+
+.project-card-tagline {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+.project-card-desc {
+  max-width: 460px;
+}
+
+.project-card-actions {
+  margin-top: 20px;
+}
+
+/* STATUS COLORS */
+.status-chip-ongoing {
+  background: rgba(32, 120, 52, 0.12);
+  color: #1e6b34;
+}
+
+.status-chip-completed {
+  background: rgba(0, 0, 0, 0.08);
+  color: #222;
+}
+
+/* =========================
+   PROJECT SLUG HERO
+========================= */
+
+.project-hero {
+  position: relative;
+  height: 420px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.project-hero-image {
+  position: absolute;
+  inset: 0;
+}
+
+.project-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6)),
+    linear-gradient(90deg, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  color: #fff;
+}
+
+.project-hero-content h1 {
+  color: #fff;
+  margin: 10px 0 6px;
+}
+
+.project-hero-tagline {
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+}
+
+/* =========================
+   DETAIL GRID
+========================= */
+
+.project-detail-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+}
+
+.project-detail-left {
+  max-width: 600px;
+}
+
+.project-detail-desc {
+  margin-bottom: 24px;
+}
+
+/* =========================
+   HIGHLIGHTS
+========================= */
+
+.highlight-list {
+  display: grid;
+  gap: 10px;
+}
+
+.highlight-item {
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.04);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.project-detail-right {
+  padding: 26px;
+  height: fit-content;
+}
+
+.project-detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* =========================
+   STATUS CHIP (FIXED)
+========================= */
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 28px;
+  width: 100px;
+  padding: 0 14px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(10px);
+  border: 1px solid transparent;
+}
+
+/* ONGOING (GREEN) */
+.status-chip-ongoing {
+  background: rgba(34, 139, 34, 0.12);
+  color: #1f7a2e;
+  border-color: rgba(34, 139, 34, 0.2);
+}
+
+/* COMPLETED (DARK) */
+.status-chip-completed {
+  background: rgba(0, 0, 0, 0.08);
+  color: #222;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   WEBSITE VIEWER
+========================= */
+
+.website-viewer-section {
+  position: relative;
+}
+
+.website-viewer-head {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.website-viewer-head h2 {
+  margin-bottom: 10px;
+}
+
+.website-viewer-lead {
+  max-width: 620px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.browser-card {
+  overflow: hidden;
+  border-radius: 6px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(22, 22, 22, 0.08);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+}
+
+.browser-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(245, 245, 245, 0.95);
+  border-bottom: 1px solid rgba(22, 22, 22, 0.08);
+}
+
+.browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.browser-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+}
+
+.browser-dots .dot.red {
+  background: #ff5f57;
+}
+
+.browser-dots .dot.yellow {
+  background: #febc2e;
+}
+
+.browser-dots .dot.green {
+  background: #28c840;
+}
+
+.browser-url {
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(22, 22, 22, 0.08);
+  font-size: 12px;
+  color: #5d5d5d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browser-frame {
+  width: 100%;
+  height: 720px;
+  background: #f1f1f1;
+}
+
+.browser-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .website-viewer-head {
+    margin-bottom: 22px;
+  }
+
+  .website-viewer-lead {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .browser-header {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .browser-frame {
+    height: 560px;
+  }
+}
+
+@media (max-width: 640px) {
+  .browser-header {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .browser-url {
+    width: 100%;
+    font-size: 11px;
+    height: 36px;
+  }
+
+  .browser-frame {
+    height: 460px;
+  }
+}

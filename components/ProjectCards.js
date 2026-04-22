@@ -15,7 +15,7 @@ const items = [
   {
     name: "Vizipa Optima",
     tag: "Legacy",
-    status: "Ready to Move",
+    status: "Completed",
     location: "Sarjapur Road",
     image: "/project-2.jpg",
     desc: "A testament to optimal living, with over 70 families already calling this Sarjapur Road community home.",
@@ -99,7 +99,7 @@ const styles = {
     minHeight: "30px",
     padding: "0 12px",
     borderRadius: "999px",
-    background: "rgba(17,17,17,0.82)",
+    background: "rgba(10, 81, 1, 0.98)",
     color: "#ffffff",
     fontSize: "11px",
     fontWeight: 600,
@@ -196,7 +196,17 @@ export default function ProjectCards() {
               <div style={styles.overlayTop}>
                 <div style={styles.tagGroup}>
                   <span style={styles.tag}>{item.tag}</span>
-                  <span style={styles.statusTag}>{item.status}</span>
+                  <span
+  style={{
+    ...styles.statusTag,
+    background:
+      item.status === "Completed"
+        ? "#c62828"   // red
+        : "rgba(10, 81, 1, 0.98)", // green (existing)
+  }}
+>
+  {item.status}
+</span>
                 </div>
               </div>
             </div>
