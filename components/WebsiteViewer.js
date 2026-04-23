@@ -8,8 +8,7 @@ export default function WebsiteViewer() {
           <p className="eyebrow">Live Preview</p>
           <h2>Project Website Preview</h2>
           <p className="website-viewer-lead">
-            A live embedded preview of the external project page inside a
-            browser-style frame.
+            Interactive Map preview
           </p>
         </div>
 
