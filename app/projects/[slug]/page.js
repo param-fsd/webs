@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowRight, CheckCircle2, MapPinned, Building2 } from "lucide-react";
 
 const projects = [
   {
@@ -10,6 +11,8 @@ const projects = [
     tagline: "A Poised Retreat in the New Hub of Bangalore.",
     desc: "A premium plotted development positioned near the STRR and the Malur-Hoskote tech-industrial corridor, created for future-facing investment and refined living.",
     image: "/project-1.jpg",
+    location: "Malur - Hoskote Growth Corridor",
+    type: "Premium Plotted Development",
     highlights: [
       "Strategic STRR Connectivity",
       "Premium Gated Layout",
@@ -23,6 +26,8 @@ const projects = [
     tagline: "A Testament to Optimal Living.",
     desc: "A successful Sarjapur Road plotted development where over 70 families already call the community home.",
     image: "/project-2.jpg",
+    location: "Sarjapur Road, Bangalore",
+    type: "Completed Residential Layout",
     highlights: [
       "70+ Families Living",
       "Developed Infrastructure",
@@ -39,11 +44,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+
   const project = projects.find((item) => item.slug === slug);
 
   if (!project) {
     return {
-      title: "Project Not Found",
+      title: "Project Not Found | Vizipa",
+      description: "The requested project could not be found.",
     };
   }
 
@@ -64,8 +71,8 @@ export default async function ProjectSlugPage({ params }) {
 
   return (
     <div className="page-shell page-top-space">
-      <section className="project-hero luxury-card">
-        <div className="project-hero-image">
+      <section className="project-single-hero luxury-card">
+        <div className="project-single-hero-media">
           <Image
             src={project.image}
             alt={project.name}
@@ -75,37 +82,64 @@ export default async function ProjectSlugPage({ params }) {
           />
         </div>
 
-        <div className="project-hero-overlay" />
+        <div className="project-single-hero-overlay" />
 
-        <div className="project-hero-content">
-          <div
-            className={`status-chip ${
-              project.status === "Ongoing"
-                ? "status-chip-ongoing"
-                : "status-chip-completed"
-            }`}
-          >
-            {project.status}
+        <div className="project-single-hero-content">
+          <div className="project-single-hero-top">
+            <Link href="/projects" className="project-back-link">
+              Back to Projects
+            </Link>
           </div>
 
-          <h1>{project.name}</h1>
-          <p className="project-hero-tagline">{project.tagline}</p>
+          <div className="project-single-hero-bottom">
+            <div
+              className={`status-chip ${
+                project.status === "Ongoing"
+                  ? "status-chip-ongoing"
+                  : "status-chip-completed"
+              }`}
+            >
+              {project.status}
+            </div>
+
+            <h1>{project.name}</h1>
+            <p className="project-single-tagline">{project.tagline}</p>
+
+            <div className="project-single-hero-meta">
+              <div className="project-single-meta-pill">
+                <MapPinned size={15} />
+                <span>{project.location}</span>
+              </div>
+
+              <div className="project-single-meta-pill">
+                <Building2 size={15} />
+                <span>{project.type}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section-gap project-detail-grid">
-        <div className="project-detail-left">
-          <p className="eyebrow">Project Overview</p>
-          <h2>Designed for growth and refined living</h2>
-          <p className="project-detail-desc">{project.desc}</p>
+      <section className="section-gap project-single-layout">
+        <div className="project-single-main">
+          <div className="project-copy-block">
+            <p className="eyebrow">Project Overview</p>
+            <h2>Crafted for value, positioning, and long-term living</h2>
+            <p className="project-single-desc">{project.desc}</p>
+          </div>
 
-          <div className="project-highlights">
-            <h3>Key Highlights</h3>
+          <div className="project-highlights-card luxury-card">
+            <div className="project-highlights-head">
+              <p className="eyebrow">Highlights</p>
+              <h3>Key Project Advantages</h3>
+            </div>
 
-            <div className="highlight-list">
+            <div className="project-highlight-list">
               {project.highlights.map((item) => (
-                <div key={item} className="highlight-item">
-                  <span className="highlight-dot" />
+                <div key={item} className="project-highlight-item">
+                  <div className="project-highlight-icon">
+                    <CheckCircle2 size={16} />
+                  </div>
                   <span>{item}</span>
                 </div>
               ))}
@@ -113,33 +147,44 @@ export default async function ProjectSlugPage({ params }) {
           </div>
         </div>
 
-        <aside className="project-detail-right luxury-card">
-          <p className="eyebrow">Explore</p>
-          <h3>Project Snapshot</h3>
-          <p>
-            Discover more details, location value, and the positioning of this
-            premium plotted development.
+        <aside className="project-single-sidebar luxury-card">
+          <p className="eyebrow">Project Snapshot</p>
+          <h3>Overview at a glance</h3>
+          <p className="project-sidebar-copy">
+            Explore the essential details and positioning of this premium
+            development before you connect with our team.
           </p>
 
-          <div className="project-quick-meta">
-            <div className="project-quick-meta-item">
+          <div className="project-sidebar-meta">
+            <div className="project-sidebar-meta-item">
               <span>Status</span>
               <strong>{project.status}</strong>
             </div>
 
-            <div className="project-quick-meta-item">
-              <span>Project</span>
+            <div className="project-sidebar-meta-item">
+              <span>Project Name</span>
               <strong>{project.name}</strong>
+            </div>
+
+            <div className="project-sidebar-meta-item">
+              <span>Location</span>
+              <strong>{project.location}</strong>
+            </div>
+
+            <div className="project-sidebar-meta-item">
+              <span>Type</span>
+              <strong>{project.type}</strong>
             </div>
           </div>
 
-          <div className="project-detail-actions">
+          <div className="project-sidebar-actions">
             <Link href="/contact" className="gold-btn">
               Enquire Now
             </Link>
 
-            <Link href="/projects" className="text-link">
-              Back to Projects
+            <Link href="/projects" className="project-text-link">
+              View All Projects
+              <ArrowRight size={16} />
             </Link>
           </div>
         </aside>
