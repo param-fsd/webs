@@ -2768,3 +2768,124 @@ body.popup-open {
     padding: 22px;
   }
 }
+
+
+/* =========================
+   MOBILE NAV FIX
+========================= */
+
+@media (max-width: 1100px) {
+
+  /* Keep navbar visible */
+  .site-header,
+  .clean-navbar.nav-hidden {
+    transform: translateY(0) !important;
+  }
+
+  /* 🔥 TRANSPARENT NAVBAR */
+  .clean-navbar {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 🔥 SCROLL EFFECT */
+  .clean-navbar.nav-scrolled {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  /* TEXT COLOR */
+  .navbar-brand,
+  .nav-link {
+    color: #ffffff;
+  }
+
+  .clean-navbar.nav-scrolled .navbar-brand,
+  .clean-navbar.nav-scrolled .nav-link {
+    color: var(--text);
+  }
+
+  /* MOBILE MENU BUTTON */
+  .mobile-menu-btn {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .clean-navbar.nav-scrolled .mobile-menu-btn {
+    background: rgba(255,255,255,0.9);
+    color: #111;
+    border-color: rgba(0,0,0,0.1);
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}
+
+/* =========================
+   MOBILE MENU PANEL
+========================= */
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-panel {
+  position: absolute;
+  top: 70px;
+  right: 12px;
+  width: 260px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+}
+
+.mobile-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 8px;
+  color: #111;
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link.active {
+  background: rgba(0,0,0,0.06);
+}
+
+/* =========================
+   ACTIVE LINK
+========================= */
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  font-weight: 600;
+}
