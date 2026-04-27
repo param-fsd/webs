@@ -27,7 +27,7 @@ export default function WebsiteViewer() {
 
           <div className="browser-frame">
             <iframe
-              src="https://spicehillsmap.twofrogs.in/"
+              src=""
               title="Preview"
               loading="lazy"
               allowFullScreen
