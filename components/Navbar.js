@@ -9,8 +9,6 @@ import {
   Briefcase,
   Building2,
   Phone,
-  Menu,
-  X,
 } from "lucide-react";
 
 const navLinks = [
@@ -26,96 +24,80 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [hideNavbar, setHideNavbar] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [showBottomBar, setShowBottomBar] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const isHome = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const isMobile = window.innerWidth <= 1100;
+    const checkViewport = () => {
+      setIsMobile(window.innerWidth <= 1100);
+    };
 
-      setScrolled(scrollY > 20);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      setScrolled(currentScrollY > 20);
 
       if (isMobile) {
-        setHideNavbar(false);
+        setHideNavbar(currentScrollY > 80);
+        setShowBottomBar(true);
       } else {
-        setHideNavbar(scrollY > 80);
+        setHideNavbar(currentScrollY > 80);
+        setShowBottomBar(currentScrollY > 140);
       }
     };
 
+    checkViewport();
     handleScroll();
 
+    window.addEventListener("resize", checkViewport);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
 
     return () => {
+      window.removeEventListener("resize", checkViewport);
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  }, [isMobile]);
 
   return (
     <>
       <header
         className={`site-header clean-navbar 
         ${hideNavbar ? "nav-hidden" : ""} 
-        ${scrolled || !isHome || menuOpen ? "nav-scrolled" : ""}`}
+        ${scrolled || !isHome ? "nav-scrolled" : ""}`}
       >
         <div className="navbar-shell">
           <Link href="/" className="navbar-brand">
             Vizipa
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="desktop-nav">
             {navLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`nav-link ${
-                  pathname === item.href ? "active" : ""
-                }`}
-              >
+              <Link key={item.label} href={item.href} className="nav-link">
                 {item.label}
               </Link>
             ))}
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu-overlay ${menuOpen ? "active" : ""}`}>
-        <div className="mobile-menu-panel">
-          {navLinks.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`mobile-menu-link ${
-                  pathname === item.href ? "active" : ""
-                }`}
-              >
-                <Icon size={18} />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
+      <nav
+        className={`bottom-tab-navbar ${
+          showBottomBar || isMobile ? "is-visible" : ""
+        }`}
+      >
+        {navLinks.map((item) => {
+          const Icon = item.icon;
+
+          return (
+            <Link key={item.label} href={item.href} className="bottom-tab-link">
+              <Icon size={16} strokeWidth={1.8} />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav>
     </>
   );
 }

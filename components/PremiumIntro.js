@@ -7,19 +7,19 @@ const benchmarks = [
     icon: <CheckCircle2 size={22} strokeWidth={1.8} />,
     label: "Execution",
     title: "Precision Engineering",
-    desc: "Every plotted development is executed with meticulous site coordination, strong planning discipline, and careful attention to approved layouts, ensuring refined delivery with minimal deviation.",
+    desc: "Disciplined planning and precise execution with minimal deviation.",
   },
   {
     icon: <ShieldCheck size={22} strokeWidth={1.8} />,
     label: "Trust",
     title: "Absolute Transparency",
-    desc: "We emphasize clarity across documentation, project direction, and customer communication, giving buyers confidence through structured processes, approvals guidance, and dependable project visibility.",
+    desc: "Clear processes and communication that build buyer confidence.",
   },
   {
     icon: <Trees size={22} strokeWidth={1.8} />,
     label: "Future Living",
     title: "Sustainable Urbanism",
-    desc: "Our layouts are shaped with long-term livability in mind, balancing nature, accessibility, and modern infrastructure to create environmentally conscious communities for evolving lifestyles.",
+    desc: "Thoughtfully planned layouts balancing nature and modern living.",
   },
 ];
 

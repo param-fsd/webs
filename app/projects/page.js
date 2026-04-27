@@ -20,6 +20,12 @@ const projects = [
   },
 ];
 
+export const metadata = {
+  title: "Projects | Vizipa",
+  description:
+    "Explore premium Vizipa plotted developments designed for clarity, connectivity, and long-term asset value.",
+};
+
 export default function ProjectsPage() {
   return (
     <div className="page-shell page-top-space">

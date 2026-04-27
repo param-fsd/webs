@@ -35,56 +35,141 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="page-shell page-top-space">
-      <section className="page-hero small-page-hero">
-        <p className="eyebrow">What We Do</p>
-        <h1>Crafting Valuable Land Experiences</h1>
-        <p className="page-lead max-3xl">
-          We go beyond plotted development. Vizipa creates premium land investment opportunities backed by precision,
-          transparency, and thoughtful buyer guidance.
-        </p>
-      </section>
+    <>
+      {/* 🔥 FULL SCREEN HERO */}
+      <section className="hero-image-wrap">
+        <img
+          src="/about-image.jpg"  // ✅ public folder
+          alt="Premium plotted development"
+          className="hero-image"
+        />
 
-      <section className="card-grid three-grid section-gap">
-        {services.map((item) => (
-          <div className="luxury-card service-card" key={item.title}>
-            <div className="icon-wrap">{item.icon}</div>
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
-          </div>
-        ))}
-      </section>
+        <div className="hero-overlay" />
 
-      <section className="section-gap luxury-band">
-        <div className="two-col-grid align-center">
-          <div>
-            <p className="eyebrow">Our Promise</p>
-            <h2>The Discipline of Precision</h2>
-            <p>
-              Every Vizipa development is designed to balance livability, connectivity, and long-term return on investment.
-              Our approach is rooted in engineering discipline and delivered with premium buyer confidence.
-            </p>
-          </div>
-          <div className="metric-grid">
-            <div className="metric-card luxury-card">
-              <span>01</span>
-              <h3>Planned Growth Corridors</h3>
-            </div>
-            <div className="metric-card luxury-card">
-              <span>02</span>
-              <h3>Transparent Development Standards</h3>
-            </div>
-            <div className="metric-card luxury-card">
-              <span>03</span>
-              <h3>Buyer-Centric Consultation</h3>
-            </div>
-            <div className="metric-card luxury-card">
-              <span>04</span>
-              <h3>Premium Community Vision</h3>
-            </div>
-          </div>
+        <div className="hero-content">
+          <p className="eyebrow">What We Do</p>
+          <h1>Crafting Valuable Land Experiences</h1>
+          <p className="page-lead">
+            We go beyond plotted development. Vizipa creates premium land investment opportunities
+            backed by precision, transparency, and thoughtful buyer guidance.
+          </p>
         </div>
       </section>
-    </div>
+
+      {/* 🔹 CONTENT */}
+      <div className="page-shell">
+
+        <section className="card-grid three-grid section-gap">
+          {services.map((item) => (
+            <div className="luxury-card service-card" key={item.title}>
+              <div className="icon-wrap">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
+          ))}
+        </section>
+
+        <section className="section-gap luxury-band">
+          <div className="two-col-grid align-center">
+            <div>
+              <p className="eyebrow">Our Promise</p>
+              <h2>The Discipline of Precision</h2>
+              <p>
+                Every Vizipa development is designed to balance livability, connectivity, and long-term return on investment.
+                Our approach is rooted in engineering discipline and delivered with premium buyer confidence.
+              </p>
+            </div>
+
+            <div className="metric-grid">
+              <div className="metric-card luxury-card">
+                <span>01</span>
+                <h3>Planned Growth Corridors</h3>
+              </div>
+              <div className="metric-card luxury-card">
+                <span>02</span>
+                <h3>Transparent Development Standards</h3>
+              </div>
+              <div className="metric-card luxury-card">
+                <span>03</span>
+                <h3>Buyer-Centric Consultation</h3>
+              </div>
+              <div className="metric-card luxury-card">
+                <span>04</span>
+                <h3>Premium Community Vision</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      {/* 🔹 INLINE CSS */}
+      <style>{`
+        .hero-image-wrap {
+          position: relative;
+          height: 100vh;
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: scale(1.05);
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+        }
+
+        .hero-content {
+          position: absolute;
+          bottom: 80px;
+          left: 80px;
+          color: #fff;
+          max-width: 600px;
+          animation: fadeUp 1s ease;
+        }
+
+        .hero-content h1 {
+          font-size: 48px;
+          margin: 10px 0;
+        }
+
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .service-card {
+          transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+          transform: translateY(-8px);
+        }
+
+        @media (max-width: 768px) {
+          .hero-content {
+            left: 20px;
+            bottom: 30px;
+            right: 20px;
+          }
+
+          .hero-content h1 {
+            font-size: 28px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

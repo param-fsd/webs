@@ -17,9 +17,8 @@ export default function HomePage() {
       <ProjectCards />
         <WebsiteViewer/>
       <WhoWeAre />
-      <ContactSection />
-    
       <TestimonialsSection/>
+      <ContactSection />
     </>
   );
 }

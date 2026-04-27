@@ -21,13 +21,13 @@ export default function WebsiteViewer() {
             </div>
 
             <div className="browser-url">
-              map preview
+              Interactive Map - Vizipa Avalon
             </div>
           </div>
 
           <div className="browser-frame">
             <iframe
-              src=""
+              src="https://spicehillsmap.twofrogs.in/"
               title="Preview"
               loading="lazy"
               allowFullScreen
