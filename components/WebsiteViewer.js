@@ -27,7 +27,7 @@ export default function WebsiteViewer() {
 
           <div className="browser-frame">
             <iframe
-              src=""
+              src="https://avalonmap.netlify.app/"
               title="Preview"
               loading="lazy"
               allowFullScreen
