@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, Phone, Mail, User, Building2 } from "lucide-react";
 
-export default function LeadPopup() {
+export default function LeadPopup({ forceOpen = false, onClose = null }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -16,15 +16,24 @@ export default function LeadPopup() {
   });
 
   useEffect(() => {
-    const popupClosed = sessionStorage.getItem("vizipa_lead_popup_closed");
-    if (!popupClosed) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 700);
+    let timer;
 
-      return () => clearTimeout(timer);
+    if (forceOpen) {
+      setIsOpen(true);
+    } else {
+      const popupClosed = sessionStorage.getItem("vizipa_lead_popup_closed");
+
+      if (!popupClosed) {
+        timer = setTimeout(() => {
+          setIsOpen(true);
+        }, 700);
+      }
     }
-  }, []);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [forceOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -40,15 +49,22 @@ export default function LeadPopup() {
 
   const closePopup = () => {
     setIsClosing(true);
+
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
-      sessionStorage.setItem("vizipa_lead_popup_closed", "true");
+
+      if (!forceOpen) {
+        sessionStorage.setItem("vizipa_lead_popup_closed", "true");
+      }
+
+      if (onClose) onClose();
     }, 220);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -81,11 +97,10 @@ export default function LeadPopup() {
         </button>
 
         <div className="lead-popup-grid">
-          {/* LEFT */}
           <div className="lead-popup-left">
             <div className="lead-popup-image-wrap">
               <img
-                src="/project-1.jpg"
+                src="/img4.jpg"
                 alt="Vizipa premium development"
                 className="lead-popup-image"
               />
@@ -117,7 +132,6 @@ export default function LeadPopup() {
             </div>
           </div>
 
-          {/* RIGHT */}
           <div className="lead-popup-right">
             {!submitted ? (
               <>

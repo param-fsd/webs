@@ -97,7 +97,7 @@ export default function AboutPage() {
 
         <div className="image-card luxury-card overflow-hidden">
           <Image
-            src="/about-image.jpg"
+            src="/img5.jpg"
             alt="Vizipa premium plotted development"
             width={1200}
             height={900}

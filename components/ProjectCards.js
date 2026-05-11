@@ -9,7 +9,7 @@ const items = [
     tag: "Flagship",
     status: "Ongoing",
     location: "STRR / Malur-Hoskote Corridor",
-    image: "/project-1.jpg",
+    image: "/img4.jpg",
     desc: "A poised retreat in the new hub of Bangalore, strategically aligned to the STRR and the Malur-Hoskote growth corridor.",
   },
   {
@@ -196,17 +196,18 @@ export default function ProjectCards() {
               <div style={styles.overlayTop}>
                 <div style={styles.tagGroup}>
                   <span style={styles.tag}>{item.tag}</span>
+
                   <span
-  style={{
-    ...styles.statusTag,
-    background:
-      item.status === "Completed"
-        ? "#c62828"   // red
-        : "rgba(10, 81, 1, 0.98)", // green (existing)
-  }}
->
-  {item.status}
-</span>
+                    style={{
+                      ...styles.statusTag,
+                      background:
+                        item.status === "Completed"
+                          ? "#c62828"
+                          : "rgba(10, 81, 1, 0.98)",
+                    }}
+                  >
+                    {item.status}
+                  </span>
                 </div>
               </div>
             </div>
@@ -233,9 +234,16 @@ export default function ProjectCards() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
           .project-cards-inline-grid {
+            display: grid !important;
             grid-template-columns: 1fr !important;
+            gap: 18px !important;
+          }
+
+          .project-cards-inline-item {
+            width: 100% !important;
+            max-width: 100% !important;
           }
         }
 

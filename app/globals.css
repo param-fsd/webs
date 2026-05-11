@@ -1620,7 +1620,7 @@ h4 {
 .quote-bg {
   position: absolute;
   inset: 0;
-  background: url("/sec.jpg") center/cover no-repeat;
+  background: url("/img4.jpg") center/cover no-repeat;
   transform: scale(1.06);
 }
 
@@ -3204,5 +3204,19 @@ body.popup-open {
   .review-popup-text {
     font-size: 13px;
     line-height: 1.75;
+  }
+}
+@media (max-width: 768px) {
+  .project-cards-inline-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .project-cards-inline-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
