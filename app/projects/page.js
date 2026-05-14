@@ -6,6 +6,7 @@ const projects = [
     name: "Vizipa Avalon",
     slug: "vizipa-avalon",
     status: "Ongoing",
+    type: "Plotted Development",
     tagline: "A Poised Retreat in the New Hub of Bangalore.",
     desc: "A premium plotted development positioned near the STRR and the Malur-Hoskote tech-industrial corridor, created for future-facing investment and refined living.",
     image: "/img4.jpg",
@@ -14,16 +15,17 @@ const projects = [
     name: "Vizipa Optima",
     slug: "vizipa-optima",
     status: "Completed",
-    tagline: "A Testament to Optimal Living.",
-    desc: "A successful Sarjapur Road plotted development where over 70 families already call the community home.",
-    image: "/project-2.jpg",
+    type: "Apartment Project",
+    tagline: "Lifestyle, Quality, and Affordability in One Rare Address.",
+    desc: "Vizipa Optima is an affordable apartment project situated 500 meters off Sarjapur Road, Bangalore. Designed to offer lifestyle, quality, and affordability, it enjoys close proximity to leading IT parks, schools, colleges, malls, and essential social infrastructure while staying away from the hustle and bustle of Sarjapur Main Road.",
+    image: "/img6.jpg",
   },
 ];
 
 export const metadata = {
   title: "Projects | Vizipa",
   description:
-    "Explore premium Vizipa plotted developments designed for clarity, connectivity, and long-term asset value.",
+    "Explore premium Vizipa developments designed for clarity, connectivity, lifestyle, and long-term asset value.",
 };
 
 export default function ProjectsPage() {
@@ -43,12 +45,10 @@ export default function ProjectsPage() {
         <div className="projects-hero-content-wrap">
           <div className="projects-hero-content">
             <p className="eyebrow light">Our Projects</p>
-
             <h1>The Portfolio</h1>
-
             <p className="projects-hero-text">
-              Explore premium Vizipa developments designed for clarity,
-              connectivity, and long-term asset value.
+              Explore Vizipa developments designed for clarity, connectivity,
+              refined living, and long-term asset value.
             </p>
           </div>
         </div>
@@ -73,14 +73,18 @@ export default function ProjectsPage() {
               </div>
 
               <div className="project-content-wrap project-content-right">
-                <div
-                  className={`project-status-tag ${
-                    project.status === "Ongoing"
-                      ? "project-status-ongoing"
-                      : "project-status-completed"
-                  }`}
-                >
-                  {project.status}
+                <div className="project-tags-row">
+                  <div
+                    className={`project-status-tag ${
+                      project.status === "Ongoing"
+                        ? "project-status-ongoing"
+                        : "project-status-completed"
+                    }`}
+                  >
+                    {project.status}
+                  </div>
+
+                  <div className="project-type-tag">{project.type}</div>
                 </div>
 
                 <h2 className="project-card-title">{project.name}</h2>
@@ -208,11 +212,19 @@ export default function ProjectsPage() {
           line-height: 1.58;
         }
 
-        .project-status-tag {
+        .project-tags-row {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+
+        .project-status-tag,
+        .project-type-tag {
           width: fit-content;
           min-height: 28px;
           padding: 0 14px;
-          margin-bottom: 12px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -234,6 +246,12 @@ export default function ProjectsPage() {
           background: rgba(0, 0, 0, 0.08);
           color: #222222;
           border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .project-type-tag {
+          background: rgba(0, 0, 0, 0.04);
+          color: #333333;
+          border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         @keyframes projectsFadeUp {
@@ -279,6 +297,13 @@ export default function ProjectsPage() {
             max-width: 270px;
             font-size: 11px;
             line-height: 1.5;
+          }
+
+          .project-status-tag,
+          .project-type-tag {
+            min-height: 26px;
+            padding: 0 11px;
+            font-size: 8.5px;
           }
         }
       `}</style>

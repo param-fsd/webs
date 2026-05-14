@@ -2,23 +2,35 @@
 
 import { useEffect, useState } from "react";
 import { X, Phone, Mail, User, Building2 } from "lucide-react";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
-export default function LeadPopup({ forceOpen = false, onClose = null }) {
+export default function LeadPopup({
+  forceOpen = false,
+  onClose = null,
+  defaultInterest = "",
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    interest: "",
+    interest: defaultInterest || "",
   });
 
   useEffect(() => {
     let timer;
 
     if (forceOpen) {
+      setFormData((prev) => ({
+        ...prev,
+        interest: defaultInterest || prev.interest,
+      }));
+      setSubmitted(false);
       setIsOpen(true);
     } else {
       const popupClosed = sessionStorage.getItem("vizipa_lead_popup_closed");
@@ -33,14 +45,11 @@ export default function LeadPopup({ forceOpen = false, onClose = null }) {
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [forceOpen]);
+  }, [forceOpen, defaultInterest]);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("popup-open");
-    } else {
-      document.body.classList.remove("popup-open");
-    }
+    if (isOpen) document.body.classList.add("popup-open");
+    else document.body.classList.remove("popup-open");
 
     return () => {
       document.body.classList.remove("popup-open");
@@ -71,16 +80,50 @@ export default function LeadPopup({ forceOpen = false, onClose = null }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Lead Form Data:", formData);
+    if (!formData.name || !formData.phone || !formData.interest) {
+      alert("Please fill Name, Phone Number and Interested In.");
+      return;
+    }
 
-    setSubmitted(true);
+    try {
+      setLoading(true);
 
-    setTimeout(() => {
-      closePopup();
-    }, 1200);
+      await addDoc(collection(db, "leads"), {
+        name: formData.name,
+        mobileNumber: formData.phone,
+        email: formData.email,
+        projectName: formData.interest,
+        message: "Entered in enquiry form",
+        notes: "",
+        source: "Website",
+        status: "New",
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        lastUpdate: serverTimestamp(),
+        timestamp: serverTimestamp(),
+      });
+
+      setSubmitted(true);
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        interest: defaultInterest || "",
+      });
+
+      setTimeout(() => {
+        closePopup();
+      }, 1200);
+    } catch (error) {
+      console.error("Lead submit error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -207,8 +250,12 @@ export default function LeadPopup({ forceOpen = false, onClose = null }) {
                     </div>
                   </div>
 
-                  <button type="submit" className="gold-btn lead-popup-submit">
-                    Submit Enquiry
+                  <button
+                    type="submit"
+                    className="gold-btn lead-popup-submit"
+                    disabled={loading}
+                  >
+                    {loading ? "Submitting..." : "Submit Enquiry"}
                   </button>
                 </form>
               </>

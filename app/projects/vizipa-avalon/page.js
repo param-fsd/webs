@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,6 +9,12 @@ import {
   Camera,
   ArrowLeft,
   ExternalLink,
+  GraduationCap,
+  Factory,
+  Plane,
+  Hospital,
+  ShoppingBag,
+  Route,
 } from "lucide-react";
 
 export const metadata = {
@@ -19,27 +26,87 @@ export const metadata = {
 export default function VizipaAvalonPage() {
   const mapUrl = "https://avalonmap2.netlify.app/";
 
+  const heroImages = ["/img4.jpg", "/img7.jpg", "/img5.jpg", "/img8.jpeg"];
+
+  const keyLocations = [
+    {
+      title: "Sharanya Narayani International School",
+      type: "Education",
+      distance: "300 m",
+      icon: GraduationCap,
+    },
+    {
+      title: "Volvo Factory",
+      type: "Industrial",
+      distance: "3.3 km",
+      icon: Factory,
+    },
+    {
+      title: "Wistron Infocomm Manufacturing",
+      type: "Manufacturing",
+      distance: "11 km",
+      icon: Factory,
+    },
+    {
+      title: "Honda Factory",
+      type: "Industrial",
+      distance: "11.8 km",
+      icon: Factory,
+    },
+    {
+      title: "Upcoming Expressway Entry/Exit",
+      type: "Connectivity",
+      distance: "12.7 km",
+      icon: Route,
+    },
+    {
+      title: "Malur Industrial Estate",
+      type: "Growth Belt",
+      distance: "15 km",
+      icon: Building2,
+    },
+    {
+      title: "MVJ Medical College",
+      type: "Healthcare",
+      distance: "15 km",
+      icon: Hospital,
+    },
+    {
+      title: "PVR Orion Uptown Mall",
+      type: "Lifestyle",
+      distance: "20 km",
+      icon: ShoppingBag,
+    },
+    {
+      title: "Bangalore Airport KIAL",
+      type: "Airport",
+      distance: "41 km",
+      icon: Plane,
+    },
+  ];
+
   return (
     <>
       <section className="avalon-hero-image-wrap">
-        <Image
-          src="/img4.jpg"
-          alt="Vizipa Avalon"
-          fill
-          priority
-          className="avalon-hero-image"
-        />
+        <div className="avalon-hero-slider">
+          {heroImages.map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt={`Vizipa Avalon Hero ${index + 1}`}
+              fill
+              priority={index === 0}
+              className={`avalon-hero-image hero-slide hero-slide-${index + 1}`}
+            />
+          ))}
+        </div>
 
         <div className="avalon-hero-overlay" />
 
         <div className="avalon-hero-content-wrap">
           <div className="avalon-hero-content">
             <div className="avalon-hero-top-row">
-              <Link
-                href="/projects"
-                className="avalon-back-btn"
-                aria-label="Back to projects"
-              >
+              <Link href="/projects" className="avalon-back-btn">
                 <ArrowLeft size={17} />
               </Link>
 
@@ -91,7 +158,9 @@ export default function VizipaAvalonPage() {
         <section className="section-gap">
           <div className="section-title-wrap">
             <p className="eyebrow">Project Overview</p>
+
             <h2>A calm residential address with strong growth potential</h2>
+
             <p className="page-lead max-3xl">
               Avalon by Vizipa is a premium plotted development located on
               Chikkanahalli-Malur Road, Karnataka. Planned across 21 acres and
@@ -102,10 +171,37 @@ export default function VizipaAvalonPage() {
             </p>
           </div>
         </section>
+      </div>
 
+      <section className="avalon-quote-section">
+        <Image
+          src="/img7.jpg"
+          alt="Vizipa Avalon"
+          fill
+          className="avalon-quote-image"
+        />
+
+        <div className="avalon-quote-overlay" />
+
+        <div className="avalon-quote-inner">
+          <div className="avalon-quote-content">
+            
+
+            <h2>Crafted for peaceful living, designed for long-term value.</h2>
+
+            <p>
+              Vizipa Avalon blends nature, connectivity, and planned
+              infrastructure into a refined plotted community experience.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="page-shell">
         <section className="section-gap">
           <div className="section-title-wrap">
             <p className="eyebrow">Key Highlights</p>
+
             <h2>Designed around trust, access, and everyday comfort</h2>
           </div>
 
@@ -123,6 +219,7 @@ export default function VizipaAvalonPage() {
                   <div className="project-highlight-icon">
                     <CheckCircle2 size={16} />
                   </div>
+
                   <span>{item}</span>
                 </div>
               </div>
@@ -133,97 +230,64 @@ export default function VizipaAvalonPage() {
         <section className="section-gap">
           <div className="section-title-wrap">
             <p className="eyebrow">Location Advantage</p>
+
             <h2>Connected to key growth destinations</h2>
+
             <p className="page-lead max-3xl">
-              Vizipa Avalon is surrounded by important education, industrial,
-              healthcare, retail, and connectivity landmarks across the
-              Hoskote–Malur growth corridor.
+              Avalon is positioned close to education, industries, healthcare,
+              lifestyle and major connectivity points across the Hoskote–Malur
+              growth corridor.
             </p>
           </div>
 
-          <div className="avalon-featured-location-grid">
-            {[
-              {
-                name: "Sharanya Narayani International School",
-                type: "Education",
-                distance: "300 m",
-                image: "/edu.webp",
-                content:
-                  "A reputed international school located close to Avalon, making the location suitable for families and long-term residential planning.",
-              },
-              {
-                name: "Volvo Factory",
-                type: "Industrial Landmark",
-                distance: "3.3 km",
-                image: "/vol.webp",
-                content:
-                  "A major industrial presence nearby, adding employment-driven demand and strengthening the future growth value of the corridor.",
-              },
-              {
-                name: "PVR Orion Uptown Mall",
-                type: "Retail & Lifestyle",
-                distance: "20 km",
-                image: "/pvr.jpg",
-                content:
-                  "A lifestyle and entertainment destination offering retail, dining, cinema, and family convenience for residents.",
-              },
-            ].map((place, index) => (
-              <div
-                key={place.name}
-                className={`luxury-card avalon-location-feature-card ${
-                  index % 2 !== 0 ? "reverse" : ""
-                }`}
-              >
-                <div className="avalon-location-image">
-                  <Image
-                    src={place.image}
-                    alt={place.name}
-                    fill
-                    className="cover-image"
-                  />
-                </div>
+          <div className="location-highlight-strip">
+            <div>
+              <span>Nearest Landmark</span>
+              <strong>300 m</strong>
+              <p>International School</p>
+            </div>
 
-                <div className="avalon-location-content">
-                  <div className="avalon-location-tags">
-                    <span>{place.type}</span>
-                    <small>
-                      <MapPinned size={14} />
-                      {place.distance}
-                    </small>
-                  </div>
+            <div>
+              <span>Industrial Belt</span>
+              <strong>3.3 km</strong>
+              <p>Volvo Factory</p>
+            </div>
 
-                  <h3>{place.name}</h3>
-                  <p>{place.content}</p>
-                </div>
-              </div>
-            ))}
+            <div>
+              <span>Airport Access</span>
+              <strong>41 km</strong>
+              <p>Bangalore KIAL</p>
+            </div>
           </div>
 
-          <div className="avalon-simple-location-grid">
-            {[
-              ["Wistron Infocomm Manufacturing", "11 km"],
-              ["Honda Factory", "11.8 km"],
-              ["Upcoming Expressway Entry/Exit", "12.7 km"],
-              ["Malur Industrial Estate", "15 km"],
-              ["MVJ Medical College", "15 km"],
-              ["Hoskote Toll Booth", "19.4 km"],
-              ["Hope Farm Junction", "29 km"],
-              ["Bangalore Airport KIAL", "41 km"],
-            ].map(([title, distance]) => (
-              <div key={title} className="luxury-card avalon-simple-card">
-                <div className="avalon-simple-icon">
-                  <MapPinned size={18} />
+          <div className="location-card-grid-new">
+            {keyLocations.map((place) => {
+              const Icon = place.icon;
+
+              return (
+                <div className="luxury-card location-mini-card" key={place.title}>
+                  <div className="location-mini-icon">
+                    <Icon size={17} />
+                  </div>
+
+                  <div className="location-mini-content">
+                    <div className="location-mini-top">
+                      <span>{place.type}</span>
+                      <strong>{place.distance}</strong>
+                    </div>
+
+                    <h3>{place.title}</h3>
+                  </div>
                 </div>
-                <h4>{title}</h4>
-                <p>{distance}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         <section className="section-gap">
           <div className="section-title-wrap">
             <p className="eyebrow">Amenities</p>
+
             <h2>Infrastructure planned for refined plotted living</h2>
           </div>
 
@@ -246,6 +310,7 @@ export default function VizipaAvalonPage() {
                 <div className="icon-wrap">
                   <Trees size={18} />
                 </div>
+
                 <p>{item}</p>
               </div>
             ))}
@@ -255,15 +320,16 @@ export default function VizipaAvalonPage() {
         <section className="section-gap">
           <div className="section-title-wrap">
             <p className="eyebrow">Gallery</p>
+
             <h2>Explore Avalon through visuals</h2>
           </div>
 
           <div className="avalon-gallery-grid">
             {[
-              { src: "/project-1.jpg", title: "Project Master View" },
-              { src: "/project-2.jpg", title: "Landscaped Open Spaces" },
-              { src: "/sec.jpg", title: "Internal Road Network" },
-              { src: "/about-image.jpg", title: "Community Planning" },
+              { src: "/img7.jpg", title: "Project Master View" },
+              { src: "/img4.jpg", title: "Landscaped Open Spaces" },
+              { src: "/img5.jpg", title: "Internal Road Network" },
+              { src: "/img8.jpeg", title: "Community Planning" },
             ].map((item, index) => (
               <div
                 className={`luxury-card avalon-gallery-card ${
@@ -291,7 +357,9 @@ export default function VizipaAvalonPage() {
           <div className="avalon-digital-title">
             <div>
               <p className="eyebrow">Digital Map</p>
+
               <h2>Explore Vizipa Avalon digitally</h2>
+
               <p className="page-lead max-3xl">
                 View the interactive project map to explore plot positioning,
                 layout details, and availability in a visual experience.
@@ -336,7 +404,9 @@ export default function VizipaAvalonPage() {
           <div className="row-title">
             <div>
               <p className="eyebrow">Enquire Now</p>
+
               <h2>Interested in Vizipa Avalon?</h2>
+
               <p>
                 Connect with the Vizipa team to know more about availability,
                 pricing, plot sizes, and project guidance.
@@ -359,9 +429,60 @@ export default function VizipaAvalonPage() {
           overflow: hidden;
         }
 
+        .avalon-hero-slider {
+          position: absolute;
+          inset: 0;
+        }
+
         .avalon-hero-image {
           object-fit: cover;
-          transform: scale(1.015);
+        }
+
+        .hero-slide {
+          opacity: 0;
+          animation: avalonHeroSlide 20s infinite;
+          transform: scale(1.04);
+        }
+
+        .hero-slide-1 {
+          animation-delay: 0s;
+        }
+
+        .hero-slide-2 {
+          animation-delay: 5s;
+        }
+
+        .hero-slide-3 {
+          animation-delay: 10s;
+        }
+
+        .hero-slide-4 {
+          animation-delay: 15s;
+        }
+
+        @keyframes avalonHeroSlide {
+          0% {
+            opacity: 0;
+            transform: scale(1.04);
+          }
+
+          8% {
+            opacity: 1;
+          }
+
+          25% {
+            opacity: 1;
+            transform: scale(1.08);
+          }
+
+          33% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 0;
+            transform: scale(1.04);
+          }
         }
 
         .avalon-hero-overlay {
@@ -371,15 +492,14 @@ export default function VizipaAvalonPage() {
           background:
             linear-gradient(
               180deg,
-              rgba(0, 0, 0, 0.06),
-              rgba(0, 0, 0, 0.2) 48%,
-              rgba(0, 0, 0, 0.42)
+              rgba(0, 0, 0, 0.08),
+              rgba(0, 0, 0, 0.26) 48%,
+              rgba(0, 0, 0, 0.6)
             ),
             linear-gradient(
               90deg,
-              rgba(0, 0, 0, 0.3),
-              rgba(0, 0, 0, 0.12) 46%,
-              rgba(0, 0, 0, 0.04)
+              rgba(0, 0, 0, 0.36),
+              rgba(0, 0, 0, 0.14)
             );
         }
 
@@ -397,9 +517,8 @@ export default function VizipaAvalonPage() {
         }
 
         .avalon-hero-content {
-          max-width: 420px;
+          max-width: 440px;
           color: #ffffff;
-          animation: avalonFadeUp 1s ease;
         }
 
         .avalon-hero-top-row {
@@ -416,223 +535,239 @@ export default function VizipaAvalonPage() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 0;
           background: rgba(255, 255, 255, 0.12);
           color: #ffffff;
           border: 1px solid rgba(255, 255, 255, 0.18);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
           text-decoration: none;
-          transition: all 0.25s ease;
-          flex-shrink: 0;
-        }
-
-        .avalon-back-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
-          transform: translateX(-3px);
         }
 
         .avalon-status-tag {
-          width: fit-content;
           min-height: 30px;
           padding: 0 14px;
-          margin-bottom: 0;
           display: inline-flex;
           align-items: center;
-          justify-content: center;
           border-radius: 999px;
           background: #238636;
           color: #ffffff;
-          border: 1px solid rgba(255, 255, 255, 0.2);
           font-size: 10px;
           font-weight: 700;
-          line-height: 1;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          box-shadow: 0 8px 22px rgba(35, 134, 54, 0.28);
-        }
-
-        .avalon-hero-content .eyebrow {
-          margin: 0 0 6px;
-          color: rgba(255, 255, 255, 0.78);
-          font-size: 9px;
-          letter-spacing: 0.14em;
         }
 
         .avalon-hero-content h1 {
-          max-width: 380px;
-          margin: 0 0 8px;
           color: #ffffff;
-          font-size: clamp(24px, 3vw, 38px);
-          line-height: 1.04;
+          margin: 0 0 10px;
+          font-size: clamp(30px, 3vw, 42px);
+          line-height: 1.08;
           font-weight: 500;
           letter-spacing: -0.03em;
         }
 
+        .avalon-hero-content .eyebrow,
         .avalon-hero-text {
-          max-width: 360px;
+          color: rgba(255, 255, 255, 0.86);
+        }
+
+        .avalon-hero-text {
           margin: 0 0 18px;
-          color: rgba(255, 255, 255, 0.82);
-          font-size: 11px;
-          line-height: 1.58;
+          font-size: 14px;
+          line-height: 1.8;
         }
 
         .avalon-hero-meta {
           display: flex;
           flex-wrap: wrap;
-          gap: 9px;
+          gap: 10px;
         }
 
         .avalon-meta-pill {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          min-height: 32px;
-          padding: 0 12px;
+          min-height: 34px;
+          padding: 0 14px;
           border-radius: 999px;
-          background: rgba(255, 255, 255, 0.13);
+          background: rgba(255, 255, 255, 0.12);
           color: #ffffff;
-          border: 1px solid rgba(255, 255, 255, 0.16);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.14);
           font-size: 11px;
-          font-weight: 500;
         }
 
-        @keyframes avalonFadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .avalon-featured-location-grid {
-          display: grid;
-          gap: 18px;
-          margin-bottom: 18px;
-        }
-
-        .avalon-location-feature-card {
-          display: grid;
-          grid-template-columns: 340px 1fr;
-          overflow: hidden;
-          border-radius: 6px;
-          background: rgba(255, 255, 255, 0.92);
-          border: 1px solid rgba(22, 22, 22, 0.08);
-        }
-
-        .avalon-location-feature-card.reverse {
-          grid-template-columns: 1fr 340px;
-        }
-
-        .avalon-location-feature-card.reverse .avalon-location-image {
-          order: 2;
-        }
-
-        .avalon-location-feature-card.reverse .avalon-location-content {
-          order: 1;
-        }
-
-        .avalon-location-image {
+        .avalon-quote-section {
           position: relative;
-          min-height: 230px;
-          background: #eaeaea;
+          min-height: 420px;
+          width: 100%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          margin: 40px 0 80px;
         }
 
-        .avalon-location-content {
-          padding: 28px;
+        .avalon-quote-image {
+          object-fit: cover;
+        }
+
+        .avalon-quote-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background:
+            linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.22),
+              rgba(0, 0, 0, 0.48)
+            );
+        }
+
+        .avalon-quote-inner {
+          position: relative;
+          z-index: 2;
+          width: min(1200px, calc(100% - 64px));
+          min-height: 420px;
+          margin: 0 auto;
           display: flex;
-          flex-direction: column;
+          align-items: center;
           justify-content: center;
         }
 
-        .avalon-location-tags {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 14px;
-          flex-wrap: wrap;
+        .avalon-quote-content {
+          max-width: 720px;
+          color: #ffffff;
+          text-align: center;
         }
 
-        .avalon-location-tags span {
-          min-height: 28px;
-          padding: 0 12px;
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          background: rgba(0, 0, 0, 0.06);
-          color: var(--accent-dark);
+        .avalon-quote-eyebrow {
+          margin: 0 0 12px;
+          color: rgba(255, 255, 255, 0.78);
           font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.18em;
           text-transform: uppercase;
         }
 
-        .avalon-location-tags small {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          color: var(--muted);
-          font-size: 12px;
-          font-weight: 600;
+        .avalon-quote-content h2 {
+          color: #ffffff;
+          margin: 0 0 16px;
+          font-size: clamp(28px, 3vw, 42px);
+          line-height: 1.16;
+          font-weight: 500;
+          letter-spacing: -0.03em;
         }
 
-        .avalon-location-content h3 {
-          font-size: 22px;
-          margin-bottom: 10px;
-        }
-
-        .avalon-location-content p {
-          margin: 0;
-          max-width: 620px;
+        .avalon-quote-content p {
+          margin: 0 auto;
+          color: rgba(255, 255, 255, 0.86);
           font-size: 14px;
-          line-height: 1.75;
-          color: var(--muted);
+          line-height: 1.8;
+          max-width: 560px;
         }
 
-        .avalon-simple-location-grid {
+        .location-highlight-strip {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 18px;
+          margin-bottom: 22px;
+        }
+
+        .location-highlight-strip div {
+          padding: 22px;
+          border-radius: 8px;
+          background: #111111;
+          color: #ffffff;
+        }
+
+        .location-highlight-strip span {
+          display: block;
+          margin-bottom: 8px;
+          color: rgba(255, 255, 255, 0.62);
+          font-size: 10px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+
+        .location-highlight-strip strong {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 26px;
+          line-height: 1;
+          font-weight: 500;
+          letter-spacing: -0.04em;
+        }
+
+        .location-highlight-strip p {
+          margin: 0;
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 12px;
+        }
+
+        .location-card-grid-new {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 18px;
         }
 
-        .avalon-simple-card {
-          padding: 22px;
-          border-radius: 6px;
-          background: rgba(255, 255, 255, 0.92);
+        .location-mini-card {
+          padding: 20px;
+          display: flex;
+          gap: 14px;
+          align-items: flex-start;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.95);
           border: 1px solid rgba(22, 22, 22, 0.08);
           transition: all 0.25s ease;
         }
 
-        .avalon-simple-card:hover {
-          transform: translateY(-5px);
+        .location-mini-card:hover {
+          transform: translateY(-4px);
         }
 
-        .avalon-simple-icon {
-          width: 42px;
-          height: 42px;
-          border-radius: 6px;
+        .location-mini-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 8px;
           display: grid;
           place-items: center;
-          background: rgba(0, 0, 0, 0.05);
-          margin-bottom: 14px;
+          flex-shrink: 0;
+          background: rgba(0, 0, 0, 0.06);
+          color: #111111;
         }
 
-        .avalon-simple-card h4 {
+        .location-mini-content {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .location-mini-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
           margin-bottom: 8px;
-          font-size: 16px;
-          line-height: 1.45;
         }
 
-        .avalon-simple-card p {
-          margin: 0;
-          font-size: 13px;
+        .location-mini-top span {
           color: var(--muted);
-          font-weight: 600;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .location-mini-top strong {
+          color: #111111;
+          font-size: 12px;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+
+        .location-mini-card h3 {
+          margin: 0;
+          color: #111111;
+          font-size: 14px;
+          line-height: 1.45;
+          font-weight: 500;
         }
 
         .avalon-gallery-grid {
@@ -645,7 +780,7 @@ export default function VizipaAvalonPage() {
         .avalon-gallery-card {
           position: relative;
           overflow: hidden;
-          border-radius: 6px;
+          border-radius: 8px;
           min-height: 180px;
         }
 
@@ -667,7 +802,6 @@ export default function VizipaAvalonPage() {
           background: rgba(0, 0, 0, 0.5);
           color: #ffffff;
           font-size: 11px;
-          letter-spacing: 0.04em;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
         }
@@ -711,22 +845,11 @@ export default function VizipaAvalonPage() {
           font-weight: 600;
           letter-spacing: 0.03em;
           text-decoration: none;
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
           white-space: nowrap;
         }
 
         @media (max-width: 980px) {
-          .avalon-location-feature-card,
-          .avalon-location-feature-card.reverse {
-            grid-template-columns: 1fr;
-          }
-
-          .avalon-location-feature-card.reverse .avalon-location-image,
-          .avalon-location-feature-card.reverse .avalon-location-content {
-            order: initial;
-          }
-
-          .avalon-simple-location-grid {
+          .location-card-grid-new {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
@@ -735,6 +858,10 @@ export default function VizipaAvalonPage() {
           .avalon-hero-content-wrap {
             width: min(1200px, calc(100% - 36px));
             padding-bottom: 36px;
+          }
+
+          .location-highlight-strip {
+            grid-template-columns: 1fr;
           }
 
           .avalon-gallery-grid {
@@ -764,57 +891,37 @@ export default function VizipaAvalonPage() {
             max-width: 300px;
           }
 
-          .avalon-hero-top-row {
-            gap: 10px;
-            margin-bottom: 14px;
-          }
-
-          .avalon-back-btn {
-            width: 34px;
-            height: 34px;
-          }
-
-          .avalon-status-tag {
-            min-height: 28px;
-            padding: 0 12px;
-            font-size: 9px;
-          }
-
-          .avalon-hero-content h1 {
-            max-width: 280px;
-            font-size: clamp(22px, 8vw, 30px);
-            margin-bottom: 7px;
-          }
-
-          .avalon-hero-text {
-            max-width: 270px;
-            font-size: 11px;
-            line-height: 1.5;
-            margin-bottom: 16px;
-          }
-
-          .avalon-hero-meta {
-            gap: 8px;
+          .avalon-hero-content h1,
+          .avalon-quote-content h2 {
+            font-size: clamp(26px, 8vw, 34px);
           }
 
           .avalon-meta-pill {
             width: 100%;
-            justify-content: flex-start;
-            min-height: 32px;
             border-radius: 10px;
           }
 
-          .avalon-simple-location-grid {
+          .avalon-quote-section {
+            min-height: 340px;
+            margin: 32px 0 60px;
+          }
+
+          .avalon-quote-inner {
+            width: calc(100% - 24px);
+            min-height: 340px;
+          }
+
+          .location-card-grid-new {
             grid-template-columns: 1fr;
+          }
+
+          .location-mini-card {
+            padding: 16px;
           }
 
           .avalon-gallery-card,
           .avalon-gallery-large {
             height: 220px;
-          }
-
-          .avalon-location-content {
-            padding: 22px;
           }
 
           .avalon-digital-title {

@@ -69,8 +69,12 @@ export default function Navbar() {
       >
         <div className="navbar-shell">
           <Link href="/" className="navbar-brand">
-            Vizipa
-          </Link>
+  <img
+    src="/logo.png"
+    alt="Vizipa"
+    className="navbar-logo"
+  />
+</Link>
 
           <nav className="desktop-nav">
             {navLinks.map((item) => (

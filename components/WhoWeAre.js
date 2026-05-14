@@ -31,7 +31,7 @@ export default function WhoWeAre() {
           {/* RIGHT IMAGE */}
           <div className="who-image-wrap">
             <img
-              src="/team.jpg"  /* replace with your image */
+              src="/img5.jpg"  /* replace with your image */
               alt="Vizipa developments"
               className="who-image"
             />

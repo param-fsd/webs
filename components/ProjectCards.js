@@ -8,17 +8,19 @@ const items = [
     name: "Vizipa Avalon",
     tag: "Flagship",
     status: "Ongoing",
-    location: "STRR / Malur-Hoskote Corridor",
+    location: "Chikkanahalli - Malur Road",
     image: "/img4.jpg",
-    desc: "A poised retreat in the new hub of Bangalore, strategically aligned to the STRR and the Malur-Hoskote growth corridor.",
+    href: "/projects/vizipa-avalon",
+    desc: "A premium DTCP-approved plotted development spread across 21 acres with 302 residential plots, landscaped spaces, underground infrastructure, and strong future growth potential.",
   },
   {
     name: "Vizipa Optima",
     tag: "Legacy",
     status: "Completed",
-    location: "Sarjapur Road",
-    image: "/project-2.jpg",
-    desc: "A testament to optimal living, with over 70 families already calling this Sarjapur Road community home.",
+    location: "Sarjapur Road, Bangalore",
+    image: "/img6.jpg",
+    href: "/projects/vizipa-optima",
+    desc: "An affordable apartment community with 70 thoughtfully designed homes, naturally ventilated living spaces, lifestyle amenities, and excellent Sarjapur Road connectivity.",
   },
 ];
 
@@ -31,11 +33,13 @@ const styles = {
     marginBottom: "24px",
     flexWrap: "wrap",
   },
+
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     gap: "22px",
   },
+
   card: {
     overflow: "hidden",
     borderRadius: "6px",
@@ -43,11 +47,11 @@ const styles = {
     background:
       "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,248,248,0.88))",
     boxShadow: "0 18px 42px rgba(0,0,0,0.08)",
-    transition: "transform 0.32s ease, box-shadow 0.32s ease",
     display: "flex",
     flexDirection: "column",
     minHeight: "100%",
   },
+
   imageWrap: {
     position: "relative",
     width: "100%",
@@ -55,12 +59,14 @@ const styles = {
     overflow: "hidden",
     background: "#ececec",
   },
+
   image: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
     display: "block",
   },
+
   overlayTop: {
     position: "absolute",
     top: "16px",
@@ -72,11 +78,13 @@ const styles = {
     gap: "10px",
     flexWrap: "wrap",
   },
+
   tagGroup: {
     display: "flex",
     gap: "8px",
     flexWrap: "wrap",
   },
+
   tag: {
     display: "inline-flex",
     alignItems: "center",
@@ -92,6 +100,7 @@ const styles = {
     backdropFilter: "blur(8px)",
     WebkitBackdropFilter: "blur(8px)",
   },
+
   statusTag: {
     display: "inline-flex",
     alignItems: "center",
@@ -99,7 +108,6 @@ const styles = {
     minHeight: "30px",
     padding: "0 12px",
     borderRadius: "999px",
-    background: "rgba(10, 81, 1, 0.98)",
     color: "#ffffff",
     fontSize: "11px",
     fontWeight: 600,
@@ -107,6 +115,7 @@ const styles = {
     backdropFilter: "blur(8px)",
     WebkitBackdropFilter: "blur(8px)",
   },
+
   content: {
     padding: "24px",
     display: "flex",
@@ -114,6 +123,7 @@ const styles = {
     gap: "12px",
     flex: 1,
   },
+
   locationRow: {
     display: "flex",
     alignItems: "center",
@@ -122,40 +132,46 @@ const styles = {
     fontSize: "12px",
     lineHeight: 1.4,
   },
+
   title: {
     margin: 0,
     fontSize: "24px",
     lineHeight: 1.15,
     color: "#111111",
+    letterSpacing: "-0.03em",
   },
+
   desc: {
     margin: 0,
     fontSize: "14px",
     lineHeight: 1.75,
     color: "#5a5a5a",
   },
+
   bottomRow: {
     marginTop: "auto",
-    paddingTop: "6px",
+    paddingTop: "10px",
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
-    gap: "14px",
-    flexWrap: "wrap",
   },
+
   textLink: {
     display: "inline-flex",
     alignItems: "center",
+    justifyContent: "center",
     gap: "8px",
-    color: "#3a3a3a",
+    minHeight: "42px",
+    padding: "0 18px",
+    borderRadius: "999px",
+    background: "#111111",
+    color: "#ffffff",
     fontWeight: 600,
-    fontSize: "13px",
+    fontSize: "12px",
+    letterSpacing: "0.05em",
+    textTransform: "uppercase",
     textDecoration: "none",
-  },
-  mobileGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr",
-    gap: "22px",
+    width: "fit-content",
+    transition: "all 0.25s ease",
   },
 };
 
@@ -165,6 +181,7 @@ export default function ProjectCards() {
       <div style={styles.sectionTitleWrap}>
         <div>
           <p className="eyebrow">Featured Projects</p>
+
           <h2 style={{ maxWidth: "760px", marginBottom: "0" }}>
             Secure a signature address in Bangalore’s rising corridors
           </h2>
@@ -181,14 +198,6 @@ export default function ProjectCards() {
             key={item.name}
             style={styles.card}
             className="project-cards-inline-item"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-8px)";
-              e.currentTarget.style.boxShadow = "0 26px 56px rgba(0,0,0,0.12)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 18px 42px rgba(0,0,0,0.08)";
-            }}
           >
             <div style={styles.imageWrap}>
               <img src={item.image} alt={item.name} style={styles.image} />
@@ -202,8 +211,8 @@ export default function ProjectCards() {
                       ...styles.statusTag,
                       background:
                         item.status === "Completed"
-                          ? "#c62828"
-                          : "rgba(10, 81, 1, 0.98)",
+                          ? "#222222"
+                          : "#238636",
                     }}
                   >
                     {item.status}
@@ -223,9 +232,18 @@ export default function ProjectCards() {
               <p style={styles.desc}>{item.desc}</p>
 
               <div style={styles.bottomRow}>
-                <Link href="/projects" style={styles.textLink}>
-                  Explore project
-                  <ArrowUpRight size={16} />
+                <Link
+                  href={item.href}
+                  style={styles.textLink}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#2a2a2a";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "#111111";
+                  }}
+                >
+                  Explore Project
+                  <ArrowUpRight size={15} />
                 </Link>
               </div>
             </div>
@@ -254,11 +272,15 @@ export default function ProjectCards() {
 
           .project-cards-inline-item article,
           .project-cards-inline-item {
-            border-radius: 24px;
+            border-radius: 16px;
           }
 
           .project-cards-inline-grid {
             gap: 18px !important;
+          }
+
+          .project-cards-inline-item {
+            overflow: hidden;
           }
         }
       `}</style>
