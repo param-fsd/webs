@@ -330,10 +330,10 @@ export default function VizipaAvalonPage() {
 
           <div className="avalon-gallery-grid">
             {[
-              { src: "/img7.jpg", title: "Project Master View" },
-              { src: "/img4.jpg", title: "Landscaped Open Spaces" },
-              { src: "/img5.jpg", title: "Internal Road Network" },
-              { src: "/img8.jpeg", title: "Community Planning" },
+              { src: "/img7.jpg", title: "Entrance" },
+              { src: "/img4.jpg", title: "Club House" },
+              { src: "/img5.jpg", title: "" },
+              { src: "/img8.jpeg", title: "" },
             ].map((item, index) => (
               <div
                 className={`luxury-card avalon-gallery-card ${

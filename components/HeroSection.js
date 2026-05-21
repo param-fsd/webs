@@ -43,13 +43,14 @@ export default function HeroSection() {
     <>
       <section className="vzHeroMain">
         <video
-          className="vzHeroVideo"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
+  suppressHydrationWarning
+  className="vzHeroVideo"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+>
           <source src="/hero.mp4" type="video/mp4" />
         </video>
 

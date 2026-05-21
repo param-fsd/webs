@@ -35,6 +35,7 @@ const menuLinksTop = [
   { label: "Who we are", href: "/whoweare" },
   { label: "Projects", href: "/projects" },
   { label: "Contact us", href: "/contact" },
+  { label: "Invest", href: "/invest" },
   { label: "About Us", href: "/about" },
 ];
 

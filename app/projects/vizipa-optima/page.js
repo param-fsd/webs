@@ -196,10 +196,10 @@ export default function VizipaOptimaPage() {
 
           <div className="optima-gallery-grid">
             {[
-              { src: "/project-2.jpg", title: "Project View" },
-              { src: "/gallery-1.jpg", title: "Community Spaces" },
-              { src: "/gallery-2.jpg", title: "Lifestyle Amenities" },
-              { src: "/gallery-3.jpg", title: "Apartment Planning" },
+              { src: "/2.jpg", title: "" },
+              { src: "/3.jpg", title: "" },
+              { src: "/5.jpg", title: "" },
+              { src: "/7.jpg", title: "" },
             ].map((item, index) => (
               <div
                 className={`luxury-card optima-gallery-card ${
