@@ -74,6 +74,8 @@ export default function Footer() {
             Vizipa Avalon is a spacious and meticulously planned plotted layout,
             complemented by lush green parks, located in a prime area near
             Whitefield, Hoskote, Budigere Cross, Malur and STRR.
+
+           <br/> Vizipa Avalon RERA No: PRM/KA/RERA/1265/347/PR/300323/005830
           </p>
 
           <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "18px 0 20px" }}>

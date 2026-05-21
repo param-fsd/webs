@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadPopup from "@/components/LeadPopup";
+import PageLoader from "@/components/PageLoader";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -24,8 +25,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body>
+    <html lang="en">
+      <body className={`${cormorant.variable} ${inter.variable}`}>
+        <PageLoader />
         <LeadPopup />
         <Navbar />
         <main>{children}</main>

@@ -133,6 +133,10 @@ export default function VizipaAvalonPage() {
                 <Building2 size={14} />
                 <span>302 Residential Plots</span>
               </div>
+              <div className="avalon-meta-pill">
+                <Building2 size={14} />
+                <span>PRM/KA/RERA/1265/347/PR/300323/005830</span>
+              </div>
             </div>
           </div>
         </div>
@@ -144,7 +148,7 @@ export default function VizipaAvalonPage() {
             {[
               ["Total Area", "21 Acres 34.5 Guntas"],
               ["Residential Plots", "302"],
-              ["Approval", "DTCP Approved"],
+              ["Approval", "DTCP & RERA Approved"],
               ["Plot Sizes", "30x40, 30x50, 40x60"],
             ].map(([label, value]) => (
               <div className="luxury-card metric-card" key={label}>

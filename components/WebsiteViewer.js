@@ -22,7 +22,7 @@ export default function WebsiteViewer() {
           <div style={{ maxWidth: "760px" }}>
             <p className="eyebrow">Live Preview</p>
 
-            <h2>Vizipa Avalon</h2>
+            <h2>Vizipa Avalon - Interactive Plot Mapping Experience</h2>
 
             <p className="website-viewer-lead">
               Premium plotted development with interactive map experience.

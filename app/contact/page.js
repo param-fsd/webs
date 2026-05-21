@@ -101,12 +101,12 @@ export default function ContactPage() {
 
             <div>
               <Phone size={18} />
-              <p>+91 98765 43210</p>
+              <p>+91 91080 05198</p>
             </div>
 
             <div>
               <Mail size={18} />
-              <p>info@vizipa.com</p>
+              <p>sales@vizipa.com</p>
             </div>
           </div>
 
@@ -114,7 +114,7 @@ export default function ContactPage() {
             <h3>Bank Tie-ups</h3>
             <p>
               Eligibility support with major nationalized and private banks
-              including SBI and HDFC.
+              including SBI, HDFC, LIC and IDBI.
             </p>
           </div>
         </div>

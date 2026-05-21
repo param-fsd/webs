@@ -119,7 +119,7 @@ export default function HeroSection() {
         .vzHeroMain {
           position: relative;
           width: 100%;
-          height: 112vh;
+          height: 93vh;
           min-height: 112svh;
           overflow: hidden;
           background: #000;
