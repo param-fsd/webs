@@ -108,7 +108,7 @@ export default function WebsiteViewer() {
           {/* WEBSITE PREVIEW */}
           <div className="browser-frame">
             <iframe
-              src="https://avalonmap2.netlify.app/"
+              src="https://avalonmap2.netlify.app/?embed=true"
               title="Vizipa Avalon Preview"
               loading="lazy"
               allowFullScreen
