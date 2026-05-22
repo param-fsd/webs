@@ -38,7 +38,7 @@ export default function LeadPopup({
       if (!popupClosed) {
         timer = setTimeout(() => {
           setIsOpen(true);
-        }, 20000);
+        }, 16000);
       }
     }
 

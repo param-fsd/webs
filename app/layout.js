@@ -18,14 +18,170 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Vizipa - Premium Plotted Developments in Bangalore",
+  metadataBase: new URL("https://vizipa.com"),
+
+  title: {
+    default:
+      "Vizipa | Premium Plotted Developments & Apartments in Bangalore",
+    template: "%s | Vizipa",
+  },
+
   description:
-    "Premium plotted developments in Bangalore with clean titles, precision engineering, and transparent execution.",
+    "Explore premium plotted developments and apartments in Bangalore with Vizipa. Discover DTCP & RERA-approved plots, luxury apartments, interactive layout maps, modern infrastructure, and investment-focused communities in prime growth locations.",
+
+  keywords: [
+    "Vizipa",
+    "Vizipa Bangalore",
+    "Premium plots in Bangalore",
+    "Luxury apartments in Bangalore",
+    "DTCP approved plots",
+    "RERA approved plots",
+    "Premium plotted developments",
+    "Luxury plotted developments",
+    "Apartments in Bangalore",
+    "Residential apartments",
+    "Villa plots Bangalore",
+    "Investment properties Bangalore",
+    "Interactive plot mapping",
+    "Interactive apartment projects",
+    "Bangalore real estate",
+    "Plots for sale in Bangalore",
+    "Flats in Bangalore",
+    "Premium homes Bangalore",
+    "Residential plots",
+    "Real estate developer Bangalore",
+  ],
+
+  authors: [{ name: "Vizipa" }],
+  creator: "Vizipa",
+  publisher: "Vizipa",
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  openGraph: {
+    title:
+      "Vizipa | Premium Plotted Developments & Apartments in Bangalore",
+    description:
+      "Discover premium plotted developments and apartments with interactive experiences, transparent documentation, and thoughtfully planned communities across Bangalore.",
+    url: "https://vizipa.com",
+    siteName: "Vizipa",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Vizipa Premium Real Estate Projects",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Vizipa | Premium Plotted Developments & Apartments in Bangalore",
+    description:
+      "Explore premium plots and apartments with interactive experiences and modern infrastructure.",
+    images: ["/og-image.jpg"],
+  },
+
+  alternates: {
+    canonical: "https://vizipa.com",
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Basic SEO */}
+        <meta charSet="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="format-detection" content="telephone=no" />
+
+        {/* Additional SEO */}
+        <meta
+          name="application-name"
+          content="Vizipa Real Estate Projects"
+        />
+        <meta
+          name="apple-mobile-web-app-title"
+          content="Vizipa"
+        />
+        <meta
+          name="apple-mobile-web-app-capable"
+          content="yes"
+        />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="default"
+        />
+
+        {/* Geo Tags */}
+        <meta name="geo.region" content="IN-KA" />
+        <meta name="geo.placename" content="Bangalore" />
+        <meta name="language" content="English" />
+
+        {/* Preconnect */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "RealEstateDeveloper",
+              name: "Vizipa",
+              url: "https://vizipa.com",
+              logo: "https://vizipa.com/logo.png",
+              image: "https://vizipa.com/og-image.jpg",
+              description:
+                "Premium plotted developments and apartment projects in Bangalore with interactive experiences, transparent documentation, and future-ready infrastructure.",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Bangalore",
+                addressRegion: "Karnataka",
+                addressCountry: "India",
+              },
+              areaServed: {
+                "@type": "City",
+                name: "Bangalore",
+              },
+              knowsAbout: [
+                "Plotted Developments",
+                "Luxury Apartments",
+                "Residential Projects",
+                "Real Estate Development",
+                "Interactive Property Mapping",
+              ],
+            }),
+          }}
+        />
+      </head>
+
       <body className={`${cormorant.variable} ${inter.variable}`}>
         <PageLoader />
         <LeadPopup />
