@@ -47,7 +47,7 @@ export default function InvestorPage() {
         mobileNumber: formData.mobileNumber,
         message: formData.message || "Investor enquiry",
         notes: "",
-        source: "Investor Page",
+        source: "Investor enquiry",
         status: "New",
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),

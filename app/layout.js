@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadPopup from "@/components/LeadPopup";
 import PageLoader from "@/components/PageLoader";
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -188,6 +189,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <WhatsAppFloatingButton />
       </body>
     </html>
   );

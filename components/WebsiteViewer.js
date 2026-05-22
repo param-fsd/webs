@@ -23,23 +23,8 @@ export default function WebsiteViewer() {
             <p className="eyebrow">Live Preview</p>
 
             <h2 >
-  Your search, <strong>visualised</strong>.
+  Your search, <strong>visualised</strong>. <br/>Dive into our interactive map to start exploring and find exactly what you’re looking for.
 </h2>
-
-<p
-  style={{
-    fontSize: "33px",
-    lineHeight: "1.2",
-    marginTop: "-10px",
-    marginBottom: "0",
-    maxWidth: "760px",
-    color: "black",
-    fontWeight: "400",
-    fontFamily: "var(--font-heading)",
-  }}
->
-  Dive into our interactive map to start exploring and find exactly what you’re looking for.
-</p>
 
             <p className="website-project-desc">
               Located on Chikkanahalli–Malur Road, Avalon by Vizipa spans
