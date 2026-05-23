@@ -31,26 +31,14 @@ export const metadata = {
     "Explore premium plotted developments and apartments in Bangalore with Vizipa. Discover DTCP & RERA-approved plots, luxury apartments, interactive layout maps, modern infrastructure, and investment-focused communities in prime growth locations.",
 
   keywords: [
-    "Vizipa",
-    "Vizipa Bangalore",
-    "Premium plots in Bangalore",
-    "Luxury apartments in Bangalore",
-    "DTCP approved plots",
-    "RERA approved plots",
-    "Premium plotted developments",
-    "Luxury plotted developments",
-    "Apartments in Bangalore",
-    "Residential apartments",
-    "Villa plots Bangalore",
-    "Investment properties Bangalore",
-    "Interactive plot mapping",
-    "Interactive apartment projects",
-    "Bangalore real estate",
-    "Plots for sale in Bangalore",
-    "Flats in Bangalore",
-    "Premium homes Bangalore",
-    "Residential plots",
-    "Real estate developer Bangalore",
+  "Vizipa",
+  "Vizipa Bangalore",
+  "Premium real estate Bangalore",
+  "Premium plots Bangalore",
+  "Apartments in Bangalore",
+  "Plotted developments Bangalore",
+  "Residential projects Bangalore",
+  "Interactive property maps",
   ],
 
   authors: [{ name: "Vizipa" }],
@@ -70,15 +58,16 @@ export const metadata = {
   },
 
   openGraph: {
-    title:
-      "Vizipa | Premium Plotted Developments & Apartments in Bangalore",
-    description:
-      "Discover premium plotted developments and apartments with interactive experiences, transparent documentation, and thoughtfully planned communities across Bangalore.",
-    url: "https://vizipa.com",
+   title: {
+  default: "Vizipa | Premium Real Estate Projects in Bangalore",
+  template: "%s | Vizipa",
+},
+description:
+  "Explore Vizipa’s premium plotted developments and apartment projects in Bangalore with modern infrastructure, clear documentation, and interactive project maps.",url: "https://vizipa.com",
     siteName: "Vizipa",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/img5.jpg",
         width: 1200,
         height: 630,
         alt: "Vizipa Premium Real Estate Projects",
@@ -94,7 +83,7 @@ export const metadata = {
       "Vizipa | Premium Plotted Developments & Apartments in Bangalore",
     description:
       "Explore premium plots and apartments with interactive experiences and modern infrastructure.",
-    images: ["/og-image.jpg"],
+    images: ["/img7.jpg"],
   },
 
   alternates: {
@@ -158,7 +147,7 @@ export default function RootLayout({ children }) {
               name: "Vizipa",
               url: "https://vizipa.com",
               logo: "https://vizipa.com/logo.png",
-              image: "https://vizipa.com/og-image.jpg",
+              image: "https://vizipa.com/img5.jpg",
               description:
                 "Premium plotted developments and apartment projects in Bangalore with interactive experiences, transparent documentation, and future-ready infrastructure.",
               address: {
