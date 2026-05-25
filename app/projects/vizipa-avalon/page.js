@@ -24,7 +24,7 @@ export const metadata = {
 };
 
 export default function VizipaAvalonPage() {
-  const mapUrl = "https://avalonmap.vizipa.com/?embed=true";
+  const mapUrl = "https://avalonmap.vizipa.com/";
 
   const heroImages = ["/img4.jpg", "/img7.jpg", "/img5.jpg", "/img8.jpeg"];
 
@@ -395,10 +395,10 @@ export default function VizipaAvalonPage() {
 
             <div className="browser-frame">
               <iframe
-                src={mapUrl}
-                title="Vizipa Avalon Interactive Digital Map"
-                loading="lazy"
-                allowFullScreen
+                src="https://avalonmap.vizipa.com/?embed=true"
+              title="Vizipa Avalon Preview"
+              loading="lazy"
+              allowFullScreen
               />
             </div>
           </div>
