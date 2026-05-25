@@ -47,7 +47,7 @@ export default function WebsiteViewer() {
 
           {/* BUTTON */}
           <a
-            href="https://avalonmap2.netlify.app/"
+            href="https://avalonmap.vizipa.com/"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -192,7 +192,7 @@ export default function WebsiteViewer() {
                   textAlign: "center",
 
                   background:
-                    "linear-gradient(180deg, rgba(245,245,245,0.60), rgba(245,245,245,0.86))",
+                    "linear-gradient(180deg, rgba(245, 245, 245, 0.12), rgba(245, 245, 245, 0.44))",
 
                   backdropFilter: "blur(5px)",
                   WebkitBackdropFilter: "blur(5px)",
@@ -421,7 +421,7 @@ export default function WebsiteViewer() {
                 IFRAME
             ========================= */}
             <iframe
-              src="https://avalonmap2.netlify.app/?embed=true"
+              src="https://avalonmap.vizipa.com/?embed=true"
               title="Vizipa Avalon Preview"
               loading="lazy"
               allowFullScreen

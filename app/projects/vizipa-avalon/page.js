@@ -24,7 +24,7 @@ export const metadata = {
 };
 
 export default function VizipaAvalonPage() {
-  const mapUrl = "https://avalonmap2.netlify.app/";
+  const mapUrl = "https://avalonmap.vizipa.com/?embed=true";
 
   const heroImages = ["/img4.jpg", "/img7.jpg", "/img5.jpg", "/img8.jpeg"];
 
