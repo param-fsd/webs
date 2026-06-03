@@ -393,14 +393,16 @@ export default function VizipaAvalonPage() {
               </div>
             </div>
 
-            <div className="browser-frame">
-              <iframe
-                src="https://avalonmap.vizipa.com/?embed=true"
-              title="Vizipa Avalon Preview"
-              loading="lazy"
-              allowFullScreen
-              />
-            </div>
+            <div className="avalon-map-container">
+  <iframe
+    src="https://avalonmap.vizipa.com/"
+    title="Vizipa Avalon Interactive Map"
+    loading="lazy"
+    allow="fullscreen"
+    allowFullScreen
+    className="avalon-map-iframe"
+  />
+</div>
           </div>
         </section>
 
