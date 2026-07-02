@@ -15,6 +15,9 @@ import {
   Hospital,
   ShoppingBag,
   Route,
+  MapPin,
+  Layers,
+  Zap,
 } from "lucide-react";
 
 export const metadata = {
@@ -357,52 +360,43 @@ export default function VizipaAvalonPage() {
           </div>
         </section>
 
-        <section className="section-gap website-viewer-section">
-          <div className="avalon-digital-title">
-            <div>
-              <p className="eyebrow">Digital Map</p>
+        <section className="section-gap">
+          <div className="avalon-map-banner avalon-map-banner--full">
+            <div className="avalon-map-banner__overlay">
+              <p className="eyebrow">Interactive Layout Map</p>
 
-              <h2>Explore Vizipa Avalon digitally</h2>
+              <h3>Discover every plot in Vizipa Avalon</h3>
 
-              <p className="page-lead max-3xl">
-                View the interactive project map to explore plot positioning,
-                layout details, and availability in a visual experience.
+              <p>
+                Explore all 302 plots across 21 acres in a fully interactive
+                experience. Check real-time availability, compare plot sizes and
+                facing, and find the perfect spot for your dream home — no site
+                visit required.
               </p>
-            </div>
 
-            <a
-              href={mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="avalon-fullscreen-btn"
-            >
-              View Full Screen <ExternalLink size={15} />
-            </a>
-          </div>
+              <div className="avalon-map-banner__features">
+                <span className="avalon-map-banner__feature">
+                  <MapPin size={15} /> Live plot availability
+                </span>
 
-          <div className="browser-card luxury-card">
-            <div className="browser-header">
-              <div className="browser-dots">
-                <span className="dot red" />
-                <span className="dot yellow" />
-                <span className="dot green" />
+                <span className="avalon-map-banner__feature">
+                  <Layers size={15} /> Sizes, facing &amp; pricing
+                </span>
+
+                <span className="avalon-map-banner__feature">
+                  <Zap size={15} /> Zoom, pan &amp; explore
+                </span>
               </div>
 
-              <div className="browser-url">
-                Vizipa Avalon — Interactive Digital Map
-              </div>
+              <a
+                href={mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="avalon-map-banner__btn"
+              >
+                Explore the Layout Map <ExternalLink size={16} />
+              </a>
             </div>
-
-            <div className="avalon-map-container">
-  <iframe
-    src="https://avalonmap.vizipa.com/"
-    title="Vizipa Avalon Interactive Map"
-    loading="lazy"
-    allow="fullscreen"
-    allowFullScreen
-    className="avalon-map-iframe"
-  />
-</div>
           </div>
         </section>
 
